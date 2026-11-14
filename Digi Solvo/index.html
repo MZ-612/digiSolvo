@@ -8,6 +8,8 @@
   <title>Digi Solvo | Digital Solutions for Growing Businesses</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -42,8 +44,8 @@
     .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { display: inline-flex; align-items: center; gap: 9px; color: var(--white); font-family: var(--display); font-size: 26px; font-weight: 800; letter-spacing: .2px; }
     .brand-mark { width: 27px; height: 27px; display: grid; place-items: center; border: 1px solid rgba(40,124,255,.85); color: var(--blue); font-family: var(--body); font-size: 13px; font-weight: 700; }
-    .brand b, .footer-brand b { color: var(--blue); }
     .brand-mark span { transform: rotate(-45deg); }
+    .brand b, .footer-brand b { color: var(--blue); }
     .nav-links { display: flex; align-items: center; gap: 30px; color: #d5deeb; font-size: 12px; font-weight: 600; }
     .nav-links a:not(.nav-cta):hover { color: var(--white); }
     .nav-cta { padding: 11px 16px; border: 1px solid rgba(255,255,255,.45); color: var(--white); transition: background .2s, color .2s; }
@@ -123,6 +125,30 @@
     .footer-links { display: flex; gap: 19px; }
     .footer-links a:hover { color: var(--white); }
 
+    .reception-launcher { position: fixed; right: 24px; bottom: 22px; z-index: 20; min-height: 52px; display: inline-flex; align-items: center; gap: 11px; padding: 0 17px; border: 0; color: var(--white); background: var(--blue); box-shadow: 0 8px 26px rgba(7,16,30,.24); font-size: 12px; font-weight: 700; cursor: pointer; }
+    .reception-launcher:hover { background: #1265ed; }
+    .reception-icon { width: 21px; height: 17px; position: relative; display: inline-block; border: 1.5px solid currentColor; border-radius: 3px; }
+    .reception-icon::after { position: absolute; bottom: -4px; left: 3px; width: 6px; height: 6px; border-bottom: 1.5px solid currentColor; background: var(--blue); content: ""; transform: skewY(-35deg); }
+    .reception-panel { position: fixed; right: 24px; bottom: 86px; z-index: 21; width: min(380px, calc(100vw - 32px)); height: min(540px, calc(100dvh - 112px)); min-height: 360px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--white); box-shadow: 0 18px 56px rgba(0,0,0,.4); }
+    .reception-head { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 15px; color: var(--white); background: var(--night); }
+    .reception-title { margin: 0; font-family: var(--display); font-size: 22px; font-weight: 700; line-height: 1; text-transform: uppercase; }
+    .reception-subtitle { display: flex; align-items: center; gap: 7px; margin: 6px 0 0; color: #c2ccda; font-size: 10px; }
+    .reception-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
+    .reception-close { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.35); color: var(--white); background: transparent; font-size: 21px; cursor: pointer; }
+    .reception-log { flex: 1; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; padding: 16px; background: #f5f7fa; }
+    .chat-message { width: fit-content; max-width: 90%; margin: 0; padding: 11px 12px; border: 1px solid #e1e6ed; color: #243044; background: var(--white); font-size: 12px; line-height: 1.65; overflow-wrap: anywhere; }
+    .chat-message.visitor { align-self: flex-end; border-color: #287cff; color: var(--white); background: #287cff; }
+    .chat-action { display: inline-block; margin-top: 6px; color: #175fc9; font-size: 11px; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+    .reception-suggestions { display: flex; flex-wrap: wrap; gap: 7px; padding: 0 13px 12px; background: #f5f7fa; }
+    .reception-suggestions button { padding: 7px 9px; border: 1px solid #d5dce6; border-radius: 3px; color: #35445a; background: var(--white); font-size: 10px; cursor: pointer; }
+    .reception-suggestions button:hover { border-color: var(--blue); color: #175fc9; }
+    .reception-form { display: grid; grid-template-columns: minmax(0, 1fr) 42px; gap: 8px; padding: 12px; border-top: 1px solid var(--line); background: var(--paper); }
+    .reception-form input { min-width: 0; height: 42px; padding: 0 11px; border: 1px solid #2c394b; border-radius: 0; color: var(--ink); background: var(--night); font: inherit; font-size: 12px; }
+    .reception-form input:focus { outline: 2px solid rgba(40,124,255,.28); border-color: var(--blue); }
+    .reception-send { width: 42px; height: 42px; border: 0; color: var(--white); background: var(--blue); font-size: 19px; cursor: pointer; }
+    .reception-send:hover { background: #1265ed; }
+    [hidden] { display: none !important; }
+
     @media (max-width: 760px) {
       .wrap { width: min(100% - 36px, 600px); }
       .nav { min-height: 68px; }
@@ -148,6 +174,8 @@
       .contact { padding: 67px 0; }
       .footer-inner { align-items: flex-start; flex-wrap: wrap; }
       .footer-copy { order: 3; width: 100%; }
+      .reception-launcher { right: 15px; bottom: 15px; }
+      .reception-panel { right: 14px; bottom: 77px; width: calc(100vw - 44px); height: min(540px, calc(100dvh - 96px)); }
     }
     @media (max-width: 440px) {
       .hero { min-height: 510px; }
@@ -210,12 +238,12 @@
         <p class="section-copy">The right mix of creative, commerce, and day-to-day support, all from one flexible digital partner.</p>
       </div>
       <div class="service-grid">
-        <article class="service" data-service="Web development"><div class="service-top"><span class="service-number">01 / BUILD</span><span class="service-icon" aria-hidden="true">&#8599;</span></div><h3>Web development</h3><p>Fast, thoughtful websites that make your business easy to find, understand, and choose.</p><a class="service-action" href="#contact">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
-        <article class="service" data-service="Graphic design"><div class="service-top"><span class="service-number">02 / CREATE</span><span class="service-icon" aria-hidden="true">&#10022;</span></div><h3>Graphic design</h3><p>Distinctive visual identities and design assets made to keep your brand looking its best.</p><a class="service-action" href="#contact">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
-        <article class="service" data-service="Property management"><div class="service-top"><span class="service-number">03 / MANAGE</span><span class="service-icon" aria-hidden="true">&#8962;</span></div><h3>Property management</h3><p>Reliable support for property listings, tenant communication, and everyday coordination.</p><a class="service-action" href="#contact">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
-        <article class="service" data-service="Amazon management"><div class="service-top"><span class="service-number">04 / SELL</span><span class="service-icon" aria-hidden="true">A</span></div><h3>Amazon management</h3><p>Practical account and product listing support to help your Amazon business run smoothly.</p><a class="service-action" href="#contact">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
-        <article class="service" data-service="Shopify management"><div class="service-top"><span class="service-number">05 / GROW</span><span class="service-icon" aria-hidden="true">&#9634;</span></div><h3>Shopify management</h3><p>Store setup, product updates, and ongoing ecommerce care for your Shopify business.</p><a class="service-action" href="#contact">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
-        <article class="service" data-service="Advertising"><div class="service-top"><span class="service-number">06 / REACH</span><span class="service-icon" aria-hidden="true">&#9654;</span></div><h3>Ads &amp; video</h3><p>Campaign support and crisp, engaging video edits that get your message in front of people.</p><a class="service-action" href="#contact">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
+        <article class="service" data-service="Web development"><div class="service-top"><span class="service-number">01 / BUILD</span><span class="service-icon" aria-hidden="true">&#8599;</span></div><h3>Web development</h3><p>Fast, thoughtful websites that make your business easy to find, understand, and choose.</p><a class="service-action" href="mailto:digisolvo2k23@gmail.com?subject=Web%20development%20inquiry">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
+        <article class="service" data-service="Graphic design"><div class="service-top"><span class="service-number">02 / CREATE</span><span class="service-icon" aria-hidden="true">&#10022;</span></div><h3>Graphic design</h3><p>Distinctive visual identities and design assets made to keep your brand looking its best.</p><a class="service-action" href="mailto:digisolvo2k23@gmail.com?subject=Graphic%20design%20inquiry">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
+        <article class="service" data-service="Property management"><div class="service-top"><span class="service-number">03 / MANAGE</span><span class="service-icon" aria-hidden="true">&#8962;</span></div><h3>Property management</h3><p>Reliable support for property listings, tenant communication, and everyday coordination.</p><a class="service-action" href="mailto:digisolvo2k23@gmail.com?subject=Property%20management%20inquiry">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
+        <article class="service" data-service="Amazon management"><div class="service-top"><span class="service-number">04 / SELL</span><span class="service-icon" aria-hidden="true">A</span></div><h3>Amazon management</h3><p>Practical account and product listing support to help your Amazon business run smoothly.</p><a class="service-action" href="mailto:digisolvo2k23@gmail.com?subject=Amazon%20management%20inquiry">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
+        <article class="service" data-service="Shopify management"><div class="service-top"><span class="service-number">05 / GROW</span><span class="service-icon" aria-hidden="true">&#9634;</span></div><h3>Shopify management</h3><p>Store setup, product updates, and ongoing ecommerce care for your Shopify business.</p><a class="service-action" href="mailto:digisolvo2k23@gmail.com?subject=Shopify%20management%20inquiry">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
+        <article class="service" data-service="Advertising"><div class="service-top"><span class="service-number">06 / REACH</span><span class="service-icon" aria-hidden="true">&#9654;</span></div><h3>Ads &amp; video</h3><p>Campaign support and crisp, engaging video edits that get your message in front of people.</p><a class="service-action" href="mailto:digisolvo2k23@gmail.com?subject=Advertising%20inquiry">Discuss this service <span aria-hidden="true">&#8594;</span></a></article>
       </div>
     </div>
   </section>
@@ -265,16 +293,36 @@
     </div>
   </footer>
 
+  <button class="reception-launcher" id="reception-launcher" type="button" aria-label="Open Digi Solvo Reception" aria-expanded="false" aria-controls="reception-panel" title="Open Digi Solvo Reception"><span class="reception-icon" aria-hidden="true"></span><span>Ask Digi Solvo</span></button>
+  <section class="reception-panel" id="reception-panel" role="dialog" aria-labelledby="reception-title" aria-modal="false" hidden>
+    <div class="reception-head">
+      <div><h2 class="reception-title" id="reception-title">Digi Solvo Reception</h2><p class="reception-subtitle"><span class="reception-dot" aria-hidden="true"></span>Automated assistant</p></div>
+      <button class="reception-close" id="reception-close" type="button" aria-label="Close Digi Solvo Reception" title="Close">&times;</button>
+    </div>
+    <div class="reception-log" id="reception-log" aria-live="polite" aria-relevant="additions">
+      <p class="chat-message">Hello! I can help with Digi Solvo's services and contact details. What would you like to know?</p>
+    </div>
+    <div class="reception-suggestions" id="reception-suggestions">
+      <button type="button">What services do you offer?</button>
+      <button type="button">How do I get started?</button>
+      <button type="button">How do quotes work?</button>
+      <button type="button">How long does a project take?</button>
+    </div>
+    <form class="reception-form" id="reception-form">
+      <label for="reception-input" hidden>Ask Digi Solvo a question</label>
+      <input id="reception-input" name="question" type="text" placeholder="Ask a question..." autocomplete="off" maxlength="500" required />
+      <button class="reception-send" type="submit" aria-label="Send question" title="Send question">&#8593;</button>
+    </form>
+  </section>
+
   <script>
     const menuButton = document.querySelector('.menu-toggle');
     const navigation = document.querySelector('.nav-links');
-
     menuButton.addEventListener('click', () => {
       const isOpen = navigation.classList.toggle('open');
       menuButton.setAttribute('aria-expanded', String(isOpen));
       menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
     });
-
     navigation.addEventListener('click', (event) => {
       if (event.target.closest('a')) {
         navigation.classList.remove('open');
@@ -282,8 +330,76 @@
         menuButton.setAttribute('aria-label', 'Open navigation');
       }
     });
-
     document.querySelector('#year').textContent = new Date().getFullYear();
+
+    const receptionLauncher = document.querySelector('#reception-launcher');
+    const receptionPanel = document.querySelector('#reception-panel');
+    const receptionLog = document.querySelector('#reception-log');
+    const receptionForm = document.querySelector('#reception-form');
+    const receptionInput = document.querySelector('#reception-input');
+    const receptionSuggestions = document.querySelector('#reception-suggestions');
+    function setReceptionOpen(isOpen) {
+      receptionPanel.hidden = !isOpen;
+      receptionLauncher.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) receptionInput.focus();
+      else receptionLauncher.focus();
+    }
+    function addReceptionMessage(text, sender, action) {
+      const message = document.createElement('p');
+      message.className = `chat-message${sender === 'visitor' ? ' visitor' : ''}`;
+      message.textContent = text;
+      if (action) {
+        const link = document.createElement('a');
+        link.className = 'chat-action';
+        link.href = action.href;
+        link.textContent = action.label;
+        message.append(document.createElement('br'), link);
+      }
+      receptionLog.append(message);
+      receptionLog.scrollTop = receptionLog.scrollHeight;
+    }
+    function receptionistAnswer(question) {
+      const query = question.toLowerCase();
+      const emailAction = { href: 'mailto:digisolvo2k23@gmail.com', label: 'Email Digi Solvo' };
+      if (/\b(hello|hi|hey|good morning|good afternoon)\b/.test(query)) return { text: 'Hello! What service or detail can I help you with?', action: emailAction };
+      if (/\b(service|services|offer|offers|do you do)\b/.test(query)) return { text: 'Digi Solvo offers web development, graphic design, property management, Amazon and Shopify account management, advertising, and video editing.', action: emailAction };
+      if (/\b(get started|start a project|how to start|start working|begin|hire|work with you)\b/.test(query)) return { text: 'To get started, email Digi Solvo with your goals and the service you need. The team can discuss the scope and next steps with you.', action: emailAction };
+      if (/\b(price|prices|pricing|cost|costs|quote|quotes|budget|charge|rates|how much)\b/.test(query)) return { text: "Pricing isn't listed on this website, so I can't give you a confirmed quote. Email the service, goals, and project scope to discuss pricing with Digi Solvo.", action: emailAction };
+      if (/\b(how long|timeline|timeframe|turnaround|delivery time|deadline|when will|how soon)\b/.test(query)) return { text: 'Project timelines depend on the work involved, and no standard turnaround is published here. Include your target date in your email so Digi Solvo can discuss a suitable timeline.', action: emailAction };
+      if (/\b(hours|opening|open|address|office|location|visit|where are you)\b/.test(query)) return { text: "I don't have confirmed office hours or a visitor address to share. Please email Digi Solvo directly for those details.", action: emailAction };
+      if (/\b(web|website|develop|development)\b/.test(query)) return { text: 'Digi Solvo builds websites designed to help businesses present their services clearly and reach customers online.', action: emailAction };
+      if (/\b(graphic|design|logo|branding|brand)\b/.test(query)) return { text: 'Digi Solvo provides graphic design, including visual identity and design assets for businesses.', action: emailAction };
+      if (/\b(property|properties|tenant|rental|real estate)\b/.test(query)) return { text: 'Property management support includes property listings, tenant communication, and everyday coordination.', action: emailAction };
+      if (/\b(amazon|marketplace)\b/.test(query)) return { text: 'Amazon support includes account and product-listing management.', action: emailAction };
+      if (/\b(shopify|ecommerce|e-commerce|online store)\b/.test(query)) return { text: 'Shopify support includes store setup, product updates, and ongoing ecommerce care.', action: emailAction };
+      if (/\b(advertising|advertise|ads|campaign|marketing)\b/.test(query)) return { text: 'Digi Solvo offers advertising and campaign support. Share your goals by email so the team can discuss the right scope.', action: emailAction };
+      if (/\b(video|editing|edit)\b/.test(query)) return { text: 'Digi Solvo offers video editing to help prepare clear, engaging content for your business.', action: emailAction };
+      if (/\b(contact|email|reach|talk|speak)\b/.test(query)) return { text: 'You can email Digi Solvo directly at digisolvo2k23@gmail.com.', action: emailAction };
+      return { text: "I don't have confirmed information about that yet. The Digi Solvo team can help directly by email.", action: emailAction };
+    }
+    function submitReceptionQuestion(question) {
+      const trimmedQuestion = question.trim();
+      if (!trimmedQuestion) return;
+      addReceptionMessage(trimmedQuestion, 'visitor');
+      const reply = receptionistAnswer(trimmedQuestion);
+      addReceptionMessage(reply.text, 'assistant', reply.action);
+    }
+    receptionLauncher.addEventListener('click', () => setReceptionOpen(receptionPanel.hidden));
+    document.querySelector('#reception-close').addEventListener('click', () => setReceptionOpen(false));
+    receptionForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      submitReceptionQuestion(receptionInput.value);
+      receptionInput.value = '';
+      receptionInput.focus();
+    });
+    receptionSuggestions.addEventListener('click', (event) => {
+      const suggestion = event.target.closest('button');
+      if (suggestion) submitReceptionQuestion(suggestion.textContent);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !receptionPanel.hidden) setReceptionOpen(false);
+    });
+
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     document.querySelectorAll('.service').forEach((card) => {
       if (finePointer) {
